@@ -14,7 +14,7 @@ void render() {
   for (size_t j = 0; j < height; j++) {
     for (size_t i = 0; i < width; i++) {
       framebuffer[i + j * width] =
-          Vec3f(j / float(height), i / float(width), 0);
+          Vec3f(j / float(height), i / float(width), 1);
     }
   }
 
