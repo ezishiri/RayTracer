@@ -4,6 +4,8 @@
 #include <cmath>
 #include <iostream>
 #include <vector>
+using namespace std;
+
 
 // for future improvements I could probably use a template for all the diff
 // types of vectors it's possible to work with (combinations of floats, doubles,
@@ -21,6 +23,29 @@ struct Vec3f {
     y = b;
     z = c;
   }
+
+
+  float operator[](size_t index)
+{
+    if (index >= 3) {
+        cout << "Array index out of bound, exiting";
+        exit(0);
+    }
+   if (index == 0){
+    return x; 
+  }
+  else if (index == 1){
+    return y; 
+  }
+  else if (index == 2){
+    return z; 
+  }
+  else {
+      std::cout << " Index out of bounds, exiting";
+      exit(0);
+  }
+    
+}
 
   // operator overloading for printing out values of 3d float vectors
   friend std::ostream &operator<<(std::ostream &os, const Vec3f &v) {
