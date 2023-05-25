@@ -118,12 +118,25 @@ struct Vec2f {
   }
 };
 
-// TODO: implement sphere
+struct Light {
+    Light(const Vec3f &p, const float &i) : position(p), intensity(i) {}
+    Vec3f position;
+    float intensity;
+};
+
+struct Material {
+    Material(const Vec3f &color) : diffuse_color(color) {}
+    Material() : diffuse_color() {}
+    Vec3f diffuse_color;
+};
+
+
 struct Sphere {
   Vec3f center;
   float radius;
+  Material material;
 
-  Sphere(const Vec3f &c, const float &r) : center(c), radius(r) {}
+  Sphere(const Vec3f &c, const float &r, const Material &m) : center(c), radius(r), material(m) {}
   bool ray_intersect(const Vec3f &orig, const Vec3f &dir, float &t0) const {
     Vec3f L = center - orig;
     float tca = L.dot(dir);
